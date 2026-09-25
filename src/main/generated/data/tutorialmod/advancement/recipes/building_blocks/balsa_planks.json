@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "tutorialmod:balsa_planks"
+        "recipes": "tutorialmod:balsa_planks"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

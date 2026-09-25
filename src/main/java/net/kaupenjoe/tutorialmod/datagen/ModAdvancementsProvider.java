@@ -1,5 +1,7 @@
 package net.kaupenjoe.tutorialmod.datagen;
 
+import net.fabricmc.fabric.api.datagen.v1.FabricPackOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
 import net.kaupenjoe.tutorialmod.TutorialMod;
 import net.kaupenjoe.tutorialmod.block.ModBlocks;
 import net.kaupenjoe.tutorialmod.item.ModItems;
@@ -25,66 +27,62 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Consumer;
 
-public class ModAdvancementsProvider extends AdvancementProvider {
-    public ModAdvancementsProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
-        super(output, registries, List.of(new TutorialModAdvancements()));
+public class ModAdvancementsProvider extends FabricAdvancementProvider {
+    public ModAdvancementsProvider(FabricPackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
+        super(output, registries);
     }
 
-    public static class TutorialModAdvancements implements AdvancementSubProvider {
-        @Override
-        public void generate(HolderLookup.Provider registries, Consumer<AdvancementHolder> output) {
-            var items = registries.lookupOrThrow(Registries.ITEM);
-            var blocks = registries.lookupOrThrow(Registries.BLOCK);
+    @Override
+    public void generateAdvancement(HolderLookup.Provider registries, Consumer<AdvancementHolder> output) {
+        var items = registries.lookupOrThrow(Registries.ITEM);
+        var blocks = registries.lookupOrThrow(Registries.BLOCK);
 
-            AdvancementHolder root = Advancement.Builder.advancement()
-                    .display(
-                            ModItems.FLUORITE,
-                            Component.translatable("advancements.tutorialmod.root.title"),
-                            Component.translatable("advancements.tutorialmod.root.description"),
-                            Identifier.withDefaultNamespace("gui/advancements/backgrounds/adventure"),
-                            AdvancementType.TASK,
-                            false,
-                            false,
-                            false
-                    )
-                    .addCriterion("has_fluorite", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(items, ModItems.FLUORITE)))
-                    .save(output, TutorialMod.MOD_ID + ":tutorialmod/root");
+        AdvancementHolder root = Advancement.Builder.advancement()
+                .rootDisplay(
+                        ModItems.FLUORITE,
+                        Component.translatable("advancements.tutorialmod.root.title"),
+                        Component.translatable("advancements.tutorialmod.root.description"),
+                        Identifier.withDefaultNamespace("gui/advancements/backgrounds/adventure"),
+                        AdvancementType.TASK,
+                        false,
+                        false,
+                        false
+                )
+                .addCriterion("has_fluorite", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(items, ModItems.FLUORITE)))
+                .save(output, Identifier.fromNamespaceAndPath(TutorialMod.MOD_ID, "tutorialmod/root"));
 
 
-            AdvancementHolder plantSeed = Advancement.Builder.advancement()
-                    .parent(root)
-                    .display(
-                            ModItems.RICE_SHOOT,
-                            Component.translatable("advancements.tutorialmod.plant_custom.title"),
-                            Component.translatable("advancements.tutorialmod.plant_custom.description"),
-                            null,
-                            AdvancementType.TASK,
-                            true,
-                            true,
-                            false
-                    )
-                    .requirements(AdvancementRequirements.Strategy.OR)
-                    .addCriterion("berries", ItemUsedOnLocationTrigger.TriggerInstance.placedBlock(ModBlocks.HONEY_BERRY_BUSH))
-                    .addCriterion("rice", ItemUsedOnLocationTrigger.TriggerInstance.placedBlock(ModBlocks.RICE_CROP))
-                    .addCriterion("strawberry", ItemUsedOnLocationTrigger.TriggerInstance.placedBlock(ModBlocks.STRAWBERRY_CROP))
-                    .save(output, TutorialMod.MOD_ID + ":tutorialmod/plant_custom");
+        AdvancementHolder plantSeed = Advancement.Builder.advancement()
+                .parent(root)
+                .display(
+                        ModItems.RICE_SHOOT,
+                        Component.translatable("advancements.tutorialmod.plant_custom.title"),
+                        Component.translatable("advancements.tutorialmod.plant_custom.description"),
+                        AdvancementType.TASK,
+                        true,
+                        true,
+                        false
+                )
+                .requirements(AdvancementRequirements.Strategy.OR)
+                .addCriterion("berries", ItemUsedOnLocationTrigger.TriggerInstance.placedBlock(blocks, ModBlocks.HONEY_BERRY_BUSH))
+                .addCriterion("rice", ItemUsedOnLocationTrigger.TriggerInstance.placedBlock(blocks, ModBlocks.RICE_CROP))
+                .addCriterion("strawberry", ItemUsedOnLocationTrigger.TriggerInstance.placedBlock(blocks, ModBlocks.STRAWBERRY_CROP))
+                .save(output, Identifier.fromNamespaceAndPath(TutorialMod.MOD_ID, "tutorialmod/plant_custom"));
 
-            AdvancementHolder useChisel = Advancement.Builder.advancement()
-                    .parent(root)
-                    .display(
-                            ModItems.CHISEL,
-                            Component.translatable("advancements.tutorialmod.chisel_stone.title"),
-                            Component.translatable("advancements.tutorialmod.chisel_stone.description"),
-                            null,
-                            AdvancementType.TASK,
-                            true,
-                            true,
-                            false
-                    )
-                    .addCriterion("chisel_stone", ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(LocationPredicate.Builder.location(),
-                            ItemPredicate.Builder.item().of(items, ModItems.CHISEL.asItem())))
-                    .save(output, TutorialMod.MOD_ID + ":tutorialmod/chisel_stone");
+        AdvancementHolder useChisel = Advancement.Builder.advancement()
+                .parent(root)
+                .display(
+                        ModItems.CHISEL,
+                        Component.translatable("advancements.tutorialmod.chisel_stone.title"),
+                        Component.translatable("advancements.tutorialmod.chisel_stone.description"),
+                        AdvancementType.TASK,
+                        true,
+                        true,
+                        false
+                )
+                .addCriterion("chisel_stone", ItemUsedOnLocationTrigger.TriggerInstance.itemUsedOnBlock(LocationPredicate.Builder.location(),
+                        ItemPredicate.Builder.item().of(items, ModItems.CHISEL.asItem())))
+                .save(output, Identifier.fromNamespaceAndPath(TutorialMod.MOD_ID, "tutorialmod/chisel_stone"));
 
-        }
     }
 }

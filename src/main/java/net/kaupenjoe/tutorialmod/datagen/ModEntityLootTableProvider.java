@@ -11,8 +11,8 @@ import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.EnchantedCountIncreaseFunction;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemKilledByPlayerCondition;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
-import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
+import net.minecraft.world.level.storage.loot.providers.number.floats.ContextFloatProviders;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -25,10 +25,10 @@ public class ModEntityLootTableProvider extends FabricEntityLootSubProvider {
     public void generate() {
         this.add(ModEntities.CAPYBARA,
                 LootTable.lootTable().withPool(LootPool.lootPool()
-                        .setRolls(ConstantValue.exactly(1))
+                        .setRolls(ContextIntProviders.exactly(1))
                         .add(LootItem.lootTableItem(ModItems.STRAWBERRY)
-                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1, 2)))
-                                .apply(EnchantedCountIncreaseFunction.lootingMultiplier(this.registries, UniformGenerator.between(1.0F, 2.0F)))
+                                .apply(SetItemCountFunction.setCount(ContextIntProviders.between(1, 2)))
+                                .apply(EnchantedCountIncreaseFunction.lootingMultiplier(enchantments, ContextFloatProviders.between(1.0F, 2.0F)))
                         ).when(LootItemKilledByPlayerCondition.killedByPlayer())));
 
     }

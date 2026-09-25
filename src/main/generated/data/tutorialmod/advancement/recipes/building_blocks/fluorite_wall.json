@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "tutorialmod:fluorite_wall"
+        "recipes": "tutorialmod:fluorite_wall"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

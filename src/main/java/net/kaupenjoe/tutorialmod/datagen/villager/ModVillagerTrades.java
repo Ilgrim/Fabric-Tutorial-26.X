@@ -40,61 +40,52 @@ public class ModVillagerTrades {
         var items = context.lookup(Registries.ITEM);
         var enchantments = context.lookup(Registries.ENCHANTMENT);
 
-        context.register(FARMER_1_EMERALD_STRAWBERRY, new VillagerTrade(
+        context.register(FARMER_1_EMERALD_STRAWBERRY, VillagerTrade.builder(
                 new TradeCost(Items.EMERALD, 4),
                 new ItemStackTemplate(ModItems.STRAWBERRY),
-                12, 8, 0.05f,
-                Optional.empty(), List.of()));
-        context.register(FARMER_1_DIAMOND_STRAWBERRY_SEEDS, new VillagerTrade(
+                12, 8, 0.05f).build());
+        context.register(FARMER_1_DIAMOND_STRAWBERRY_SEEDS, VillagerTrade.builder(
                 new TradeCost(Items.DIAMOND, 12),
                 new ItemStackTemplate(ModItems.STRAWBERRY_SEEDS),
-                12, 10, 0.05f,
-                Optional.empty(), List.of()));
+                12, 8, 0.05f).build());
 
-        context.register(FARMER_2_EMERALD_HONEY_BERRIES, new VillagerTrade(
+        context.register(FARMER_2_EMERALD_HONEY_BERRIES, VillagerTrade.builder(
                 new TradeCost(Items.EMERALD, 16),
                 new ItemStackTemplate(ModItems.HONEY_BERRIES),
-                12, 10, 0.05f,
-                Optional.empty(), List.of()));
+                12, 8, 0.05f).build());
 
 
-        context.register(MASON_1_FLUORITE_CHISEL, new VillagerTrade(
+        context.register(MASON_1_FLUORITE_CHISEL, VillagerTrade.builder(
                 new TradeCost(ModItems.FLUORITE, 6),
                 new ItemStackTemplate(ModItems.CHISEL),
-                2, 19, 0.05f,
-                Optional.empty(), List.of()));
+                12, 8, 0.05f).build());
 
-        context.register(LIBRARIAN_1_FLUORITE_ENCHANTED_BOOK, new VillagerTrade(
+        context.register(LIBRARIAN_1_FLUORITE_ENCHANTED_BOOK, VillagerTrade.builder(
                 new TradeCost(ModItems.FLUORITE, 32),
                 new ItemStackTemplate(Items.ENCHANTED_BOOK),
-                12, 6, 0.05f,
-                Optional.empty(),
-                VillagerTrades.enchantedBook(items,
+                12, 8, 0.05f)
+                        .addModifiers(VillagerTrades.enchantedBook(items,
                         HolderSet.direct(enchantments.getOrThrow(Enchantments.INFINITY),
-                                enchantments.getOrThrow(Enchantments.MULTISHOT)))));
+                                enchantments.getOrThrow(Enchantments.MULTISHOT)))).build());
 
 
-        context.register(KAUPENGER_1_EMERALD_FLUORITE, new VillagerTrade(
+        context.register(KAUPENGER_1_EMERALD_FLUORITE, VillagerTrade.builder(
                 new TradeCost(Items.EMERALD, 6),
                 new ItemStackTemplate(ModItems.FLUORITE, 4),
-                12, 19, 0.05f,
-                Optional.empty(), List.of()));
-        context.register(KAUPENGER_1_EMERALD_RAW_FLUORITE, new VillagerTrade(
+                12, 8, 0.05f).build());
+        context.register(KAUPENGER_1_EMERALD_RAW_FLUORITE, VillagerTrade.builder(
                 new TradeCost(Items.EMERALD, 5),
                 new ItemStackTemplate(ModItems.RAW_FLUORITE, 12),
-                12, 23, 0.05f,
-                Optional.empty(), List.of()));
+                12, 8, 0.05f).build());
 
-        context.register(KAUPENGER_2_EMERALD_PEDESTAL, new VillagerTrade(
+        context.register(KAUPENGER_2_EMERALD_PEDESTAL, VillagerTrade.builder(
                 new TradeCost(Items.EMERALD, 24),
                 new ItemStackTemplate(ModBlocks.PEDESTAL_BLOCK.asItem()),
-                12, 24, 0.05f,
-                Optional.empty(), List.of()));
-        context.register(KAUPENGER_2_FLUORITE_SPECTRE_STAFF, new VillagerTrade(
+                12, 8, 0.05f).build());
+        context.register(KAUPENGER_2_FLUORITE_SPECTRE_STAFF, VillagerTrade.builder(
                 new TradeCost(ModItems.FLUORITE, 19),
                 new ItemStackTemplate(ModItems.SPECTRE_STAFF),
-                2, 19, 0.05f,
-                Optional.empty(), List.of()));
+                12, 8, 0.05f).build());
     }
 
 

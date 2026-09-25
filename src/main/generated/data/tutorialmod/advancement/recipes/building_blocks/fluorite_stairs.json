@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "tutorialmod:fluorite_stairs"
+        "recipes": "tutorialmod:fluorite_stairs"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

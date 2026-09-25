@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "tutorialmod:fluorite_fence_gate"
+        "recipes": "tutorialmod:fluorite_fence_gate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

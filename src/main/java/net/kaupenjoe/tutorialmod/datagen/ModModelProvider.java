@@ -26,6 +26,7 @@ import net.minecraft.client.renderer.item.properties.conditional.HasComponent;
 import net.minecraft.resources.Identifier;
 import net.minecraft.util.random.WeightedList;
 
+import java.util.Map;
 import java.util.Optional;
 
 public class ModModelProvider extends FabricModelProvider {
@@ -98,14 +99,8 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerators.generateFlatItem(ModItems.FLUORITE_HOE, ModelTemplates.FLAT_HANDHELD_ITEM);
         itemModelGenerators.generateSpear(ModItems.FLUORITE_SPEAR);
 
-        itemModelGenerators.generateTrimmableItem(ModItems.FLUORITE_HELMET, ModArmorMaterials.FLUORITE_KEY,
-                ItemModelGenerators.TRIM_PREFIX_HELMET, false);
-        itemModelGenerators.generateTrimmableItem(ModItems.FLUORITE_CHESTPLATE, ModArmorMaterials.FLUORITE_KEY,
-                ItemModelGenerators.TRIM_PREFIX_CHESTPLATE, false);
-        itemModelGenerators.generateTrimmableItem(ModItems.FLUORITE_LEGGINGS, ModArmorMaterials.FLUORITE_KEY,
-                ItemModelGenerators.TRIM_PREFIX_LEGGINGS, false);
-        itemModelGenerators.generateTrimmableItem(ModItems.FLUORITE_BOOTS, ModArmorMaterials.FLUORITE_KEY,
-                ItemModelGenerators.TRIM_PREFIX_BOOTS, false);
+        itemModelGenerators.generateTrimmableArmorSet(ModItems.FLUORITE_HELMET, ModItems.FLUORITE_CHESTPLATE, ModItems.FLUORITE_LEGGINGS,
+                ModItems.FLUORITE_BOOTS, false, Map.of());
 
         itemModelGenerators.generateFlatItem(ModItems.FLUORITE_HORSE_ARMOR, ModelTemplates.FLAT_ITEM);
 

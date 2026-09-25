@@ -53,10 +53,10 @@ public class ModDimensions {
                 DimensionType.Skybox.OVERWORLD,
                 CardinalLighting.Type.DEFAULT,
                 EnvironmentAttributeMap.builder()
-                        .set(EnvironmentAttributes.FOG_COLOR, -6164153)
-                        .set(EnvironmentAttributes.SKY_COLOR, OverworldBiomes.calculateSkyColor(2.8F))
-                        .set(EnvironmentAttributes.AMBIENT_LIGHT_COLOR, -4129186)
-                        .set(EnvironmentAttributes.CLOUD_COLOR, ARGB.red(50))
+                        .set(EnvironmentAttributes.FOG_COLOR, ARGB.vector3fFromRGB24(-6164153))
+                        .set(EnvironmentAttributes.SKY_COLOR, ARGB.vector3fFromRGB24(OverworldBiomes.calculateSkyColor(2.8F)))
+                        .set(EnvironmentAttributes.AMBIENT_LIGHT_COLOR, ARGB.vector3fFromRGB24(-4129186))
+                        .set(EnvironmentAttributes.CLOUD_COLOR, ARGB.vector4fFromARGB32(ARGB.red(50)))
                         .set(EnvironmentAttributes.CLOUD_HEIGHT, 123F)
                         .set(EnvironmentAttributes.BACKGROUND_MUSIC, BackgroundMusic.OVERWORLD)
                         .set(EnvironmentAttributes.BED_RULE, BedRule.CAN_SLEEP_WHEN_DARK)

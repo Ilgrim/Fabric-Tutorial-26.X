@@ -17,6 +17,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.sounds.AmbientLeavesBlockSoundPlayer;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
@@ -66,7 +67,7 @@ public class ModBlocks {
     public static final Block FLUORITE_PRESSURE_PLATE = registerBlock("fluorite_pressure_plate",
             properties -> new PressurePlateBlock(BlockSetType.IRON,
                     properties.mapColor(MapColor.COLOR_BLUE).forceSolidOn().instrument(NoteBlockInstrument.BASS)
-                            .noCollision().strength(0.5F).pushReaction(PushReaction.DESTROY)));
+                            .noCollision().strength(0.5F).pushReaction(PushReaction.POPPED)));
 
     public static final Block FLUORITE_FENCE = registerBlock("fluorite_fence",
             properties -> new FenceBlock(properties.strength(3f).requiresCorrectToolForDrops()));
@@ -92,13 +93,13 @@ public class ModBlocks {
 
     public static final Block STRAWBERRY_CROP = registerBlockWithoutBlockItem("strawberry_crop",
             properties -> new StrawberryCropBlock(properties.noCollision().randomTicks().instabreak().sound(SoundType.CROP)
-                    .pushReaction(PushReaction.DESTROY)));
+                    .pushReaction(PushReaction.POPPED)));
     public static final Block HONEY_BERRY_BUSH = registerBlockWithoutBlockItem("honey_berry_bush",
             properties -> new HoneyBerryBushBlock(properties.randomTicks().noCollision().sound(SoundType.SWEET_BERRY_BUSH)
-                    .pushReaction(PushReaction.DESTROY)));
+                    .pushReaction(PushReaction.POPPED)));
     public static final Block RICE_CROP = registerBlockWithoutBlockItem("rice_crop",
             properties -> new RiceCropBlock(properties.noCollision().randomTicks().instabreak().sound(SoundType.CROP)
-                    .pushReaction(PushReaction.DESTROY)));
+                    .pushReaction(PushReaction.POPPED)));
 
     public static final Block CRYSTALLIZER = registerBlock("crystallizer",
             properties -> new CrystallizerBlock(properties.strength(3f).requiresCorrectToolForDrops()));
@@ -121,18 +122,18 @@ public class ModBlocks {
                     .mapColor(MapColor.COLOR_ORANGE).instrument(NoteBlockInstrument.BASS)
                     .strength(2.0F, 3.0F).sound(SoundType.WOOD).ignitedByLava()));
     public static final Block BALSA_LEAVES = registerBlock("balsa_leaves",
-            properties -> new UntintedParticleLeavesBlock(0.01f, ParticleTypes.CHERRY_LEAVES, properties
-                    .mapColor(MapColor.PLANT).strength(0.2F).randomTicks().sound(SoundType.AZALEA_LEAVES)
+            properties -> new UntintedParticleLeavesBlock(0.01f, ParticleTypes.CHERRY_LEAVES, AmbientLeavesBlockSoundPlayer.noAmbientSound(),
+                    properties.mapColor(MapColor.PLANT).strength(0.2F).randomTicks().sound(SoundType.AZALEA_LEAVES)
                     .noOcclusion().isValidSpawn(Blocks::ocelotOrParrot).isSuffocating(Blocks::never)
-                    .isViewBlocking(Blocks::never).ignitedByLava().pushReaction(PushReaction.DESTROY).isRedstoneConductor(Blocks::never)));
+                    .ignitedByLava().pushReaction(PushReaction.POPPED).isRedstoneConductor(Blocks::never)));
 
     public static final Block BALSA_SAPLING = registerBlock("balsa_sapling",
             properties -> new SaplingBlock(ModTreeGrowers.BALSA, properties
                     .mapColor(MapColor.PLANT).noCollision().randomTicks().instabreak()
-                    .sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY)));
+                    .sound(SoundType.GRASS).pushReaction(PushReaction.POPPED)));
     public static final Block POTTED_BALSA_SAPLING = registerBlockWithoutBlockItem("potted_balsa_sapling",
             properties -> new FlowerPotBlock(BALSA_SAPLING, properties
-                    .instabreak().noOcclusion().pushReaction(PushReaction.DESTROY)));
+                    .instabreak().noOcclusion().pushReaction(PushReaction.POPPED)));
 
     public static final Block KAUPEN_PORTAL = registerBlock("kaupen_portal",
             properties -> new KaupenPortalBlock(properties.strength(3f)));

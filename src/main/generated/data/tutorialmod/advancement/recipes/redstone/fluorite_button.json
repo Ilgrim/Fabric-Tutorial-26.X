@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "tutorialmod:fluorite_button"
+        "recipes": "tutorialmod:fluorite_button"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

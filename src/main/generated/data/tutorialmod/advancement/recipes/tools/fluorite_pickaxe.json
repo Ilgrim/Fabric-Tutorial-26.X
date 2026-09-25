@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "tutorialmod:fluorite_pickaxe"
+        "recipes": "tutorialmod:fluorite_pickaxe"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

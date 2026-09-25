@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "tutorialmod:fluorite_spear"
+        "recipes": "tutorialmod:fluorite_spear"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

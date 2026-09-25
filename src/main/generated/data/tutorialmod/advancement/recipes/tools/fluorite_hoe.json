@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "tutorialmod:fluorite_hoe"
+        "recipes": "tutorialmod:fluorite_hoe"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

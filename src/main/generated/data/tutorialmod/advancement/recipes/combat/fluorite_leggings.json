@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "tutorialmod:fluorite_leggings"
+        "recipes": "tutorialmod:fluorite_leggings"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

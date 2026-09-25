@@ -16,6 +16,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.TooltipDisplay;
 import net.minecraft.world.item.equipment.ArmorType;
+import net.minecraft.world.level.storage.loot.providers.number.ints.ContextIntProviders;
 
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -26,7 +27,7 @@ public class ModItems {
 
     public static final Item CHISEL = registerItem("chisel", properties -> new ChiselItem(properties.durability(32)));
     public static final Item STRAWBERRY = registerItem("strawberry", properties -> new Item(properties
-            .food(ModFoods.STRAWBERRY, ModFoods.STRAWBERRY_CONSUMABLE)) {
+            .food(ModFoods.STRAWBERRY, ModFoods.STRAWBERRY_CONSUMABLE).compostable(ContextIntProviders.COMPOSTABLE_LOW_MEDIUM)) {
         @Override
         public void appendHoverText(ItemStack itemStack, TooltipContext context, TooltipDisplay display, Consumer<Component> builder, TooltipFlag tooltipFlag) {
             builder.accept(Component.translatable("tooltip.tutorialmod.strawberry"));
@@ -34,18 +35,19 @@ public class ModItems {
         }
     });
 
-    public static final Item COMBUSTIBLE_SPORES = registerItem("combustible_spores", properties -> new Item(properties.stacksTo(16)));
+    public static final Item COMBUSTIBLE_SPORES = registerItem("combustible_spores",
+            properties -> new Item(properties.stacksTo(16).cookingFuel(ContextIntProviders.COOKING_TIME_COAL_BLOCK)));
 
     public static final Item FLUORITE_SWORD = registerItem("fluorite_sword",
             properties -> new Item(properties.sword(ModToolMaterials.FLUORITE, 3, -2.4f)));
     public static final Item FLUORITE_PICKAXE = registerItem("fluorite_pickaxe",
             properties -> new Item(properties.pickaxe(ModToolMaterials.FLUORITE, 1, -2.8f)));
     public static final Item FLUORITE_SHOVEL = registerItem("fluorite_shovel",
-            properties -> new ShovelItem(ModToolMaterials.FLUORITE, 1.5f, -3.0f, properties));
+            properties -> new Item(properties.shovel(ModToolMaterials.FLUORITE, 1.5f, -3.0f)));
     public static final Item FLUORITE_AXE = registerItem("fluorite_axe",
-            properties -> new AxeItem(ModToolMaterials.FLUORITE, 6f, -3.2f, properties));
+            properties -> new Item(properties.axe(ModToolMaterials.FLUORITE, 6f, -3.2f)));
     public static final Item FLUORITE_HOE = registerItem("fluorite_hoe",
-            properties -> new HoeItem(ModToolMaterials.FLUORITE, 0f, -3.0f, properties));
+            properties -> new Item(properties.hoe(ModToolMaterials.FLUORITE, 0f, -3.0f)));
     public static final Item FLUORITE_SPEAR = registerItem("fluorite_spear",
             properties -> new Item(properties.spear(ModToolMaterials.FLUORITE, 0.95F, 0.95F, 0.6F,
                     2.5F, 11.0F, 6.75F, 5.1F, 11.25F, 4.6F)));
@@ -69,7 +71,8 @@ public class ModItems {
             properties -> new Item(properties.stacksTo(1)));
 
     public static final Item STRAWBERRY_SEEDS = registerItem("strawberry_seeds",
-            properties -> new BlockItem(ModBlocks.STRAWBERRY_CROP, properties.useItemDescriptionPrefix()));
+            properties -> new BlockItem(ModBlocks.STRAWBERRY_CROP, properties.useItemDescriptionPrefix()
+                    .compostable(ContextIntProviders.COMPOSTABLE_LOW)));
     public static final Item HONEY_BERRIES = registerItem("honey_berries",
             properties -> new BlockItem(ModBlocks.HONEY_BERRY_BUSH,
                     properties.useItemDescriptionPrefix().food(ModFoods.HONEY_BERRIES)));

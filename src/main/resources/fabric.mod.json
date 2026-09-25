@@ -24,11 +24,8 @@
 		"fabric-datagen": [
 			"net.kaupenjoe.tutorialmod.TutorialModDataGenerator"
 		],
-		"rei_client": [
-			"net.kaupenjoe.tutorialmod.compat.TutorialModREIClient"
-		],
-		"rei_common": [
-			"net.kaupenjoe.tutorialmod.compat.TutorialModREICommon"
+		"jei_mod_plugin": [
+			"net.kaupenjoe.tutorialmod.compat.JEITutorialModPlugin"
 		]
 	},
 	"mixins": [
@@ -37,7 +34,7 @@
 	"accessWidener": "tutorialmod.classtweaker",
 	"depends": {
 		"fabricloader": ">=0.19.2",
-		"minecraft": "~26.2",
+		"minecraft": "~26.3",
 		"java": ">=25",
 		"fabric-api": "*"
 	}

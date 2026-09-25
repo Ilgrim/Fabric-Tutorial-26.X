@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "tutorialmod:fluorite_axe"
+        "recipes": "tutorialmod:fluorite_axe"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

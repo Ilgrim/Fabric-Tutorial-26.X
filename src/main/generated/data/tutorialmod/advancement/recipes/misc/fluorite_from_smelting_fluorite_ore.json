@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "tutorialmod:fluorite_from_smelting_fluorite_ore"
+        "recipes": "tutorialmod:fluorite_from_smelting_fluorite_ore"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

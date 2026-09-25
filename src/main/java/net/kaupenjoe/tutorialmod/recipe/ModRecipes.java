@@ -1,5 +1,6 @@
 package net.kaupenjoe.tutorialmod.recipe;
 
+import net.fabricmc.fabric.api.recipe.v1.sync.RecipeSynchronization;
 import net.kaupenjoe.tutorialmod.TutorialMod;
 import net.kaupenjoe.tutorialmod.recipe.custom.CrystallizerRecipe;
 import net.minecraft.core.Registry;
@@ -22,6 +23,8 @@ public class ModRecipes {
             });
 
     public static void registerModRecipes() {
+        RecipeSynchronization.synchronizeRecipeSerializer(CRYSTALLIZER_SERIALIZER);
+
         TutorialMod.LOGGER.info("Registering ModRecipes for " + TutorialMod.MOD_ID);
     }
 }

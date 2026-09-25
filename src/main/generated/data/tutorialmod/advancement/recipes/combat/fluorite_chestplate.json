@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "tutorialmod:fluorite_chestplate"
+        "recipes": "tutorialmod:fluorite_chestplate"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

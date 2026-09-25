@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "tutorialmod:fluorite_shovel"
+        "recipes": "tutorialmod:fluorite_shovel"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "tutorialmod:stripped_balsa_wood"
+        "recipes": "tutorialmod:stripped_balsa_wood"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

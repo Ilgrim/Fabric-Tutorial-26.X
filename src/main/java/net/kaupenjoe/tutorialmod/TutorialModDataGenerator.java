@@ -7,7 +7,7 @@ import net.kaupenjoe.tutorialmod.datagen.villager.ModPOITags;
 import net.kaupenjoe.tutorialmod.datagen.villager.ModTradeSets;
 import net.kaupenjoe.tutorialmod.datagen.villager.ModVillagerTradeTags;
 import net.kaupenjoe.tutorialmod.datagen.villager.ModVillagerTrades;
-import net.kaupenjoe.tutorialmod.worldgen.ModConfiguredFeatures;
+import net.kaupenjoe.tutorialmod.worldgen.ModFeatures;
 import net.kaupenjoe.tutorialmod.worldgen.ModPlacedFeatures;
 import net.kaupenjoe.tutorialmod.worldgen.dimension.ModDimensions;
 import net.minecraft.core.RegistrySetBuilder;
@@ -42,7 +42,7 @@ public class TutorialModDataGenerator implements DataGeneratorEntrypoint {
 		registryBuilder.add(Registries.VILLAGER_TRADE, ModVillagerTrades::bootstrap);
 		registryBuilder.add(Registries.TRADE_SET, ModTradeSets::bootstrap);
 
-		registryBuilder.add(Registries.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap);
+		registryBuilder.add(Registries.FEATURE, ModFeatures::bootstrap);
 		registryBuilder.add(Registries.PLACED_FEATURE, ModPlacedFeatures::bootstrap);
 
 		registryBuilder.add(Registries.LEVEL_STEM, ModDimensions::bootstrapStem);

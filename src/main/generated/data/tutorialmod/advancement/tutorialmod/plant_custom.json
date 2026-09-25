@@ -3,34 +3,28 @@
   "criteria": {
     "berries": {
       "conditions": {
-        "location": [
-          {
-            "block": "tutorialmod:honey_berry_bush",
-            "condition": "minecraft:block_state_property"
-          }
-        ]
+        "location": {
+          "type": "minecraft:match_block",
+          "blocks": "tutorialmod:honey_berry_bush"
+        }
       },
       "trigger": "minecraft:placed_block"
     },
     "rice": {
       "conditions": {
-        "location": [
-          {
-            "block": "tutorialmod:rice_crop",
-            "condition": "minecraft:block_state_property"
-          }
-        ]
+        "location": {
+          "type": "minecraft:match_block",
+          "blocks": "tutorialmod:rice_crop"
+        }
       },
       "trigger": "minecraft:placed_block"
     },
     "strawberry": {
       "conditions": {
-        "location": [
-          {
-            "block": "tutorialmod:strawberry_crop",
-            "condition": "minecraft:block_state_property"
-          }
-        ]
+        "location": {
+          "type": "minecraft:match_block",
+          "blocks": "tutorialmod:strawberry_crop"
+        }
       },
       "trigger": "minecraft:placed_block"
     }

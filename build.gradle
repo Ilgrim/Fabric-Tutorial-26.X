@@ -12,7 +12,16 @@ repositories {
 	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
-	maven { url "https://maven.shedaniel.me" }
+	maven {
+		// location of the maven that hosts JEI files since January 2023
+		name = "Jared's maven"
+		url = "https://maven.blamejared.com/"
+	}
+	maven {
+		// location of a maven mirror for JEI files, as a fallback
+		name = "ModMaven"
+		url = "https://modmaven.dev"
+	}
 }
 
 fabricApi {
@@ -34,11 +43,10 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 
-	compileOnly("me.shedaniel:RoughlyEnoughItems-api-fabric:26.2.820")
-	runtimeOnly("me.shedaniel:RoughlyEnoughItems-fabric:26.2.820")
-
-	include api("dev.architectury:architectury-fabric:21.0.4")
-	compileOnly("me.shedaniel.cloth:basic-math:0.6.1")
+	// compile against the JEI API but do not include it at runtime
+	compileOnly("mezz.jei:jei-${minecraft_version}-fabric-api:${jei_version}")
+	// at runtime, use the full JEI jar for Fabric
+	implementation "mezz.jei:jei-${minecraft_version}-fabric:${jei_version}"
 }
 
 processResources {

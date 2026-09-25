@@ -23,7 +23,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "tutorialmod:raw_fluorite_from_fluorite_and_stick"
+        "recipes": "tutorialmod:raw_fluorite_from_fluorite_and_stick"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

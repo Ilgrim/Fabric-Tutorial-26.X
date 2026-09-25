@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "tutorialmod:fluorite_helmet"
+        "recipes": "tutorialmod:fluorite_helmet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

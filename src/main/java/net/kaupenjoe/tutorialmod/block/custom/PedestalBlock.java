@@ -1,10 +1,12 @@
 package net.kaupenjoe.tutorialmod.block.custom;
 
-import com.mojang.serialization.MapCodec;
 import net.kaupenjoe.tutorialmod.block.entity.custom.PedestalBlockEntity;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Prediction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -22,15 +24,9 @@ import org.jspecify.annotations.Nullable;
 
 public class PedestalBlock extends BaseEntityBlock {
     public static final VoxelShape SHAPE = Block.box(2, 0, 2, 14, 13, 14);
-    private static MapCodec<PedestalBlock> CODEC = simpleCodec(PedestalBlock::new);
 
     public PedestalBlock(Properties properties) {
         super(properties);
-    }
-
-    @Override
-    protected MapCodec<? extends BaseEntityBlock> codec() {
-        return CODEC;
     }
 
     @Override
@@ -44,7 +40,7 @@ public class PedestalBlock extends BaseEntityBlock {
     }
 
     @Override
-    public void playerDestroy(Level level, Player player, BlockPos pos, BlockState state,
+    public void playerDestroy(ServerLevel level, ServerPlayer player, BlockPos pos, BlockState state,
                               @Nullable BlockEntity blockEntity, ItemStack destroyedWith) {
         if(level.getBlockEntity(pos) instanceof PedestalBlockEntity pedestalBlockEntity) {
             pedestalBlockEntity.drops();
@@ -77,7 +73,7 @@ public class PedestalBlock extends BaseEntityBlock {
                 pedestalBlockEntity.clearContent();
 
                 if(!player.getInventory().add(stackOnPedestal)) {
-                    player.drop(stackOnPedestal, false);
+                    player.drop(stackOnPedestal, false, Prediction.SERVER_ONLY);
                 }
                 level.playSound(player, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 1f, 1f);
             }
